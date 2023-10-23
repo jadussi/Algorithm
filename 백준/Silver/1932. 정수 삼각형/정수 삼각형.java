@@ -13,20 +13,18 @@ public class Main {
             String[] strArr = br.readLine().split(" ");
             for(int j = 0; j < strArr.length; j++) {
                 tri[i][j] = Integer.parseInt(strArr[j]);
+                cp[i][j] = Integer.parseInt(strArr[j]);
             }
         }
 
-        cp[0][0] =tri[0][0];
-
         for(int i = 1; i < num; i++) {
-            for (int j = 0; j <= i; j++) {
+            for (int j = 0; j < i; j++) {
                 if (j == 0) {
-                    cp[i][j] = cp[i - 1][j] + tri[i][j];
-                } else if(j == j+i) {
-                    cp[i][j] = cp[i-1][j-1] + tri[i][j];
+                    cp[i][0] = cp[i - 1][0] + tri[i][0];
                 } else {
                     cp[i][j] = Math.max(cp[i-1][j-1], cp[i-1][j]) + tri[i][j];
                 }
+                cp[i][j+1] =  cp[i-1][j] + tri[i][j+1];
             }
         }
 
@@ -35,6 +33,7 @@ public class Main {
             if(max<cp[num-1][i])
                 max=cp[num-1][i];
         }
+
         System.out.println(max);
 
     }
