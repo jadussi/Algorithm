@@ -7,6 +7,7 @@ public class Main {
     static int[] arr;
     static int n;
     static int[] ll;
+    static StringBuilder sb;
     public static void main(String[] args) {
         Scanner scan = new Scanner(new InputStreamReader(System.in));
         n = scan.nextInt();
@@ -21,20 +22,25 @@ public class Main {
 
         arr = new int[n];
 
+        sb = new StringBuilder();
+
         for(int i = 0; i < n; i++) {
             tf[i] = true;
             arr[0] = ll[i];
             func(1);
             tf[i] = false;
         }
+
+        System.out.println(sb);
     }
 
     static void func(int d) {
         if(d == n) {
             for(int i : arr) {
-                System.out.print(i+" ");
+                //System.out.print(i+" ");
+                sb.append(i).append(" ");
             }
-            System.out.println();
+            sb.append("\n");
             //arr.remove(n-1);    // 마지막 요소 제거
             return;
         }
