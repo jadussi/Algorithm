@@ -24,6 +24,11 @@ public class Main {
         int ed = t[n-1];
         cal = 0;
 
+        bSearch(0, ed);
+        System.out.println(cal);
+    }
+
+    static void bSearch(int st, int ed) {
         while(st <= ed) {
             int mid = (st+ed)/2;
             long sum = 0;
@@ -39,6 +44,5 @@ public class Main {
                 ed = mid-1;
             }
         }
-        System.out.println(cal);
     }
 }
